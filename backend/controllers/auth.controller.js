@@ -4,6 +4,7 @@ import generateTokenAndSetCookie from "../utils/generateToken.js";
 
 // -----------------------[SIGNUP CHECK]-----------------------
 export const signup = async (req, res) => {
+
   try {
     console.log("inside try block");
     // console.log(req);
@@ -43,7 +44,7 @@ export const signup = async (req, res) => {
       username,
       password: hashedPassword,
       gender,
-      profilePic: gender === "Male" ? MaleProfilePic : FemaleProfilePic,
+      profilePic: gender === "male" ? MaleProfilePic : FemaleProfilePic,
     });
 
     if(newUser) {
@@ -87,6 +88,8 @@ export const login = async (req, res) => {
       username: user.username,
       profilePic: user.profilePic,
     });
+
+    console.log(`logged in as: ${username}`)
 
   } catch (error) {
     console.log('Error in signup controller:', error.message);
