@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import User from "./user.model";
 
 const conversationSchema = new mongoose.Schema(
     {
@@ -16,5 +15,12 @@ const conversationSchema = new mongoose.Schema(
                 default: [],
             }
         ]
+    },
+    {
+        timestamps: true,
     }
 )
+
+const Conversation = mongoose.model("Conversation", conversationSchema);
+
+export default Conversation;
