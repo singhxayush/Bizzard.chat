@@ -6,7 +6,7 @@ import generateTokenAndSetCookie from "../utils/generateToken.js";
 export const signup = async (req, res) => {
 
   try {
-    console.log("inside try block");
+    console.log("inside try block - signup");
     // console.log(req);
     console.log(req.body);
     // if(!req.body){ console.log('Invalid') }
@@ -32,12 +32,14 @@ export const signup = async (req, res) => {
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
-
     // Profile Avatars
     // Male: https://avatar.iran.liara.run/public/boy
     // Female: https://avatar.iran.liara.run/public/girl
     const MaleProfilePic = `https://avatar.iran.liara.run/public/boy?username=${username}`;
     const FemaleProfilePic = `https://avatar.iran.liara.run/public/girl?username=${username}`;
+
+    // let organization = [];
+    // let currentUserOrganization = null;
 
     const newUser = new User({
       fullName,
@@ -87,6 +89,8 @@ export const login = async (req, res) => {
       fullName: user.fullName,
       username: user.username,
       profilePic: user.profilePic,
+      organizations: user.organizations,
+      currentOrganization: user.currentOrganization,
     });
 
     console.log(`logged in as: ${username}`)

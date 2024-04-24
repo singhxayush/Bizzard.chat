@@ -31,7 +31,7 @@ export const sendMessage = async (req, res) => {
         // await conversation.save();
         // await newMessage.save();
 
-        // This more efficient as both calls will run in parallel
+        // This is more efficient as both calls will run in parallel
         await Promise.all([conversation.save(), newMessage.save()]);
 
         res.status(201).json(newMessage)

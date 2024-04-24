@@ -25,9 +25,18 @@ const userSchema = new mongoose.Schema(
 			type: String,
 			default: "",
 		},
+		organizations: [{ // Array of organization IDs
+            type: String,
+            ref: 'Organization', // 'Organization' -> name of organization model
+            default: [],
+        }],
+        currentOrganization: { // ID of the current organization
+            type: String,
+            ref: 'Organization',
+            default: null,
+        },
 	},
 	{ 
-		// createdAt, updatedAt => Member since <createdAt>
 		timestamps: true,
 	}
 );
